@@ -1,0 +1,5 @@
+syntax = "proto3";
+
+package carneau;
+
+option go_package = "github.com/yourusername/carneauengine/server/proto;proto";
