@@ -19,8 +19,7 @@ func NewHandler(conn *pgx.Conn) *Handler {
 }
 
 func (h *Handler) GetUserByUsername(username string) (*models.User, error) {
-	user := new(models.User);
-
+	var user models.User
 
 	err := h.DB.QueryRow(context.Background(), 
 		"SELECT id, username, password FROM users WHERE username = $1",
@@ -30,12 +29,11 @@ func (h *Handler) GetUserByUsername(username string) (*models.User, error) {
 		log.Fatal("Failure to query row.")
 	}
 
-	return user, nil
+	return &user, nil
 }
 
 
 func (h *Handler) LoginUser(c *gin.Context) {
-	user := new(models.User)
 	
 
 
