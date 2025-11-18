@@ -3,7 +3,6 @@ package main
 import (
 	"context"
 	"log"
-	"os"
 	"time"
 
 	"github.com/gin-gonic/gin"
@@ -34,7 +33,7 @@ func main() {
 		MaxAge: 12 * time.Hour,
 	    }))
 
-	stripeKey := os.Getenv("STRIPE_SECRET_KEY")	
+	// stripeKey := os.Getenv("STRIPE_SECRET_KEY")	
 
 	conn, err := db.Connect()
 	if err != nil {
@@ -44,9 +43,10 @@ func main() {
 
 	h := handlers.NewHandler(conn);
 
-	r.GET("/events", h.GetSummarisedEvents)
-	r.GET("/events/:id", h.GetEvent)
-	r.GET("/create-checkout-session", h.CreateCheckoutSession)
+	r.GET("/api/events", h.GetSummarisedEvents)
+	r.GET("/api/events/:id", h.GetEvent)
+	r.POST("/api/ticketTypes", h.GetTicketTypes)
+	//r.GET("/checkout/create-checkout-session", h.CreateCheckoutSession)
 
 	// Start server on port 8080 (default)
 	// Server will listen on 0.0.0.0:8080 (localhost:8080 on Windows)
