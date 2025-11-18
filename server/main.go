@@ -3,27 +3,38 @@ package main
 import (
 	"context"
 	"log"
+	"os"
 	"time"
 
 	"github.com/gin-gonic/gin"
 
 	"github.com/gin-contrib/cors"
+	"github.com/joho/godotenv"
 	"github.com/tpgcig/carneauengine/server/db"
 	"github.com/tpgcig/carneauengine/server/handlers"
 )
 
+func init() {
+    err := godotenv.Load() // loads .env automatically
+    if err != nil {
+        log.Println("No .env file found")
+    }
+}
+
 func main() {
-	// Create a Gin router with default middleware (logger and recovery)
+
 	r := gin.Default()
 
 	r.Use(cors.New(cors.Config{
-		AllowOrigins:     []string{"http://localhost:3000"}, // your frontend origin
+		AllowOrigins:     []string{"http://localhost:3000"}, 
 		AllowMethods:     []string{"GET", "POST", "PUT", "DELETE"},
 		AllowHeaders:     []string{"Origin", "Content-Type", "Authorization"},
 		ExposeHeaders:    []string{"Content-Length"},
 		AllowCredentials: true,
 		MaxAge: 12 * time.Hour,
 	    }))
+
+	stripeKey := os.Getenv("STRIPE_SECRET_KEY")	
 
 	conn, err := db.Connect()
 	if err != nil {
@@ -33,7 +44,9 @@ func main() {
 
 	h := handlers.NewHandler(conn);
 
-	r.GET("/events", h.GetEvents)
+	r.GET("/events", h.GetSummarisedEvents)
+	r.GET("/events/:id", h.GetEvent)
+	r.GET("/create-checkout-session", h.CreateCheckoutSession)
 
 	// Start server on port 8080 (default)
 	// Server will listen on 0.0.0.0:8080 (localhost:8080 on Windows)
