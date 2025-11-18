@@ -12,7 +12,7 @@ export default function Home() {
 
 
 	useEffect(() => {
-		fetch("http://localhost:8080/events")
+		fetch("http://localhost:8080/api/events")
 		.then(res => res.json())
 		.then(data => {
 			setEvents(data);

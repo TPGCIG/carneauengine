@@ -2,8 +2,7 @@
 
 import * as React from "react";
 import { useState, useEffect } from "react";
-import { useParams } from "next/navigation";
-
+import { useParams, useRouter } from "next/navigation";
 import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import {
@@ -53,7 +52,7 @@ interface Event {
 }
 
 interface TicketSelection {
-  [ticketType: string]: number;
+  [ticketId: number]: number;
 }
 
 const EventPage = () => {
@@ -67,9 +66,11 @@ const EventPage = () => {
   // Track selected quantities for each ticket type
   const [ticketSelection, setTicketSelection] = useState<TicketSelection>({});
 
+  const router = useRouter();
+
   useEffect(() => {
     setLoading(true);
-    fetch(`http://localhost:8080/events/${eventId}`)
+    fetch(`http://localhost:8080/api/events/${eventId}`)
       .then((res) => {
         if (!res.ok) throw new Error("Failed to fetch");
         return res.json() as Promise<Event>;
@@ -85,8 +86,42 @@ const EventPage = () => {
   if (!eventInfo.image_urls) return <p>Error loading event data</p>;
 
   // Update parent state when ticket quantity changes
-  const handleQuantityChange = (ticketType: string, quantity: number) => {
-    setTicketSelection((prev) => ({ ...prev, [ticketType]: quantity }));
+  const handleQuantityChange = (ticketId: number, quantity: number) => {
+    setTicketSelection((prev) => ({ ...prev, [ticketId]: quantity }));
+  };
+
+  async function handleSubmit() {
+    console.log(ticketSelection);
+    if (!eventInfo) return;
+    if (!ticketSelection) return;
+
+    sessionStorage.setItem("ticketSelection", JSON.stringify(ticketSelection));
+    router.push(`/events/${eventId}/checkout`)
+
+
+
+
+    // try {
+    //   const res = await fetch("localhost:8080/checkout/create-checkout-session", {
+    //     method: "POST",
+    //     headers:  { "ContentType": "application/json" }, 
+    //     body: JSON.stringify({
+    //       eventId: eventInfo.id,
+    //       tickets: ticketSelection
+    //     }),
+    //   });
+
+    //   const data = await res.json();
+
+    //   if (!res.ok) {
+    //     throw new Error(data.error || "Failed to create checkout session");
+    //   }
+
+    //   window.location.href = data.url;
+    // } catch (err: any) {
+    //   console.log("Checkout error: ",err.message);
+    //   alert("Failed to start checkout session. Please try again later.");
+    // }
   };
 
   return (
@@ -139,17 +174,14 @@ const EventPage = () => {
                     <TicketTypeRow key={ticket.id}
                     ticketType={ticket.name}
                     price={ticket.price}
-                    count={ticketSelection[ticket.name] || 0}
-                    onQuantityChange={(qty) => handleQuantityChange(ticket.name, qty)}
+                    count={ticketSelection[ticket.id] || 0}
+                    onQuantityChange={(qty) => handleQuantityChange(ticket.id, qty)}
                     />
                 ))}
-
-
-
               </div>
 
               <SheetFooter>
-                <Button type="submit">
+                <Button type="submit" onClick={handleSubmit}>
                   Checkout ({Object.values(ticketSelection).reduce((a, b) => a + b, 0)}{" "}
                   tickets)
                 </Button>
