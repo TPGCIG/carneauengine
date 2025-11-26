@@ -55,12 +55,13 @@
   --popover-foreground: #000000;
 
   /* Primary purple */
-  --primary: #51247A;             /* your purple */
+  --primary: #104B7A;             /* your purple */
   --primary-foreground: #ffffff;  /* text on purple */
 
   /* Secondary/Accent/Muted */
-  --secondary: #d8b4fe;           /* lighter purple */
-  --secondary-foreground: #000000;
+  --secondary: #0A3252;           /* lighter purple */
+  --secondary-foreground: #ffffff;
+  
   --accent: #c4b5fd;
   --accent-foreground: #000000;
   --muted: #f5f5f5;
@@ -133,8 +134,14 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    background-color: #fafafa;
+    background-image:
+      linear-gradient(45deg, rgba(0,0,0,0.05) 25%, transparent 25%, transparent 75%, rgba(0,0,0,0.05) 75%, rgba(0,0,0,0.05)),
+      linear-gradient(45deg, rgba(0,0,0,0.05) 25%, transparent 25%, transparent 75%, rgba(0,0,0,0.05) 75%, rgba(0,0,0,0.05));
+    background-size: 8px 8px;
+    background-position: 0 0, 4px 4px; /* offsets second gradient for checkerboard */
   }
+
 }
 @layer base {
   button:not(:disabled),

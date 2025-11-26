@@ -96,7 +96,7 @@ const EventPage = () => {
     if (!ticketSelection) return;
 
     sessionStorage.setItem("ticketSelection", JSON.stringify(ticketSelection));
-    router.push(`/events/${eventId}/checkout`)
+    router.push(`/events/${eventId}/cart`)
 
 
 
@@ -125,8 +125,8 @@ const EventPage = () => {
   };
 
   return (
-    <div className="w-1/2 mx-auto">
-      <Carousel className="w-full">
+    <div className="mx-auto">
+      <Carousel className="w-9/10 mx-auto">
         <CarouselContent>
           {eventInfo.image_urls.length === 0 && <p>No images for this event</p>}
           {eventInfo.image_urls.map((image_url, index) => (

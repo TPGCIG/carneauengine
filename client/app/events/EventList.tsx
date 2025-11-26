@@ -21,7 +21,7 @@ const EventList: FC<EventListProps> = ({ events }) => {
             {events.map(event => (
                 <a className="block" href={`/events/${event.id}`} key={event.id}>
                     <div 
-                    className="max-w-sm h-66 rounded-lg overflow-hidden shadow-md
+                    className="max-w-sm h-66 overflow-hidden shadow-md
                                 hover:bg-primary hover:text-primary-foreground
                                 transition-colors duration-300 ease-in-out
                                 flex flex-col"
@@ -38,7 +38,7 @@ const EventList: FC<EventListProps> = ({ events }) => {
 
                         {/* Organisation tag */}
                         <div className="px-6 pt-1 pb-2">
-                            <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 truncate">
+                            <span className="inline-block bg-gray-200 px-3 py-1 text-sm font-semibold text-gray-700 truncate">
                             {event.organisation_name}
                             </span>
                         </div>

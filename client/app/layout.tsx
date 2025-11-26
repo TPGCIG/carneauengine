@@ -24,13 +24,27 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <Navigation/>
+    <html lang="en">
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}>
+        
+        <Navigation />
 
-        {children}
+        {/* Main content */}
+        <div className="flex-1 relative mx-auto w-full max-w-[1280px] px-10
+          before:absolute before:top-0 before:bottom-0 before:left-0 before:w-px before:bg-gray-300
+          after:absolute after:top-0 after:bottom-0 after:right-0 after:w-px after:bg-gray-300">
+
+          <div className="">
+            {children}
+          </div>
+
+        </div>
+
+        {/* Footer inside body */}
+        <footer className="bg-gray-800 text-white p-4 text-center">
+          © 2025 Carneau
+        </footer>
+
       </body>
     </html>
   );

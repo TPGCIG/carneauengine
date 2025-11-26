@@ -36,7 +36,7 @@ export default function Home() {
 	};
 
 	return (
-		<div className='w-1/2 mx-auto'>
+		<div className=''>
 			<div className="flex items-center justify-center font-sans dark:primary py-8">
 				<SearchForEvent onSearch={handleSearch}/>
 			</div>

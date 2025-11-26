@@ -2,10 +2,10 @@
 -- PostgreSQL database dump
 --
 
-\restrict 0uqdeH0hP8O59dqvdTCsFDKVqSBczrnerRBNGUklH0Dw6mCquIvfq8XJl85imKR
+\restrict BP9tMvcPuQQebjJTfDmV46bIP4UJPcUhlJGf7plKf2TAxIZYXwz0RPVTVv62aXd
 
--- Dumped from database version 18.0
--- Dumped by pg_dump version 18.0
+-- Dumped from database version 18.1
+-- Dumped by pg_dump version 18.1
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -24,6 +24,44 @@ SET default_tablespace = '';
 SET default_table_access_method = heap;
 
 --
+-- Name: event_images; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.event_images (
+    id integer NOT NULL,
+    event_id integer NOT NULL,
+    url text NOT NULL,
+    alt_text text,
+    sort_order integer DEFAULT 0,
+    created_at timestamp without time zone DEFAULT now()
+);
+
+
+ALTER TABLE public.event_images OWNER TO postgres;
+
+--
+-- Name: event_images_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.event_images_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER SEQUENCE public.event_images_id_seq OWNER TO postgres;
+
+--
+-- Name: event_images_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.event_images_id_seq OWNED BY public.event_images.id;
+
+
+--
 -- Name: events; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -38,8 +76,7 @@ CREATE TABLE public.events (
     total_capacity integer,
     is_public boolean DEFAULT true,
     created_at timestamp without time zone DEFAULT now(),
-    updated_at timestamp without time zone DEFAULT now(),
-    image_url text NOT NULL
+    updated_at timestamp without time zone DEFAULT now()
 );
 
 
@@ -89,7 +126,8 @@ CREATE TABLE public.organisations (
     name text NOT NULL,
     description text,
     contact_email text,
-    created_at timestamp without time zone DEFAULT now()
+    created_at timestamp without time zone DEFAULT now(),
+    acronym text
 );
 
 
@@ -276,6 +314,13 @@ ALTER SEQUENCE public.users_id_seq OWNED BY public.users.id;
 
 
 --
+-- Name: event_images id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.event_images ALTER COLUMN id SET DEFAULT nextval('public.event_images_id_seq'::regclass);
+
+
+--
 -- Name: events id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -315,6 +360,14 @@ ALTER TABLE ONLY public.tickets ALTER COLUMN id SET DEFAULT nextval('public.tick
 --
 
 ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_id_seq'::regclass);
+
+
+--
+-- Name: event_images event_images_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.event_images
+    ADD CONSTRAINT event_images_pkey PRIMARY KEY (id);
 
 
 --
@@ -387,6 +440,14 @@ ALTER TABLE ONLY public.users
 
 ALTER TABLE ONLY public.users
     ADD CONSTRAINT users_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: event_images event_images_event_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.event_images
+    ADD CONSTRAINT event_images_event_id_fkey FOREIGN KEY (event_id) REFERENCES public.events(id) ON DELETE CASCADE;
 
 
 --
@@ -465,5 +526,5 @@ ALTER TABLE ONLY public.tickets
 -- PostgreSQL database dump complete
 --
 
-\unrestrict 0uqdeH0hP8O59dqvdTCsFDKVqSBczrnerRBNGUklH0Dw6mCquIvfq8XJl85imKR
+\unrestrict BP9tMvcPuQQebjJTfDmV46bIP4UJPcUhlJGf7plKf2TAxIZYXwz0RPVTVv62aXd
 
