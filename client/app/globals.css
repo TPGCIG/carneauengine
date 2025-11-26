@@ -62,7 +62,7 @@
   --secondary: #0A3252;           /* lighter purple */
   --secondary-foreground: #ffffff;
   
-  --accent: #c4b5fd;
+  --accent: #6e73f5;
   --accent-foreground: #000000;
   --muted: #f5f5f5;
   --muted-foreground: #000000;
@@ -71,11 +71,11 @@
   --destructive: #f87171;
   --border: #e5e7eb;
   --input: #f9fafb;
-  --ring: #a78bfa;
+  --ring: #ffffff;
 
   /* Charts & Sidebar (optional) */
   --chart-1: #51247A;
-  --chart-2: #a78bfa;
+  --chart-2: #6e73f5;
   --chart-3: #c4b5fd;
   --chart-4: #d8b4fe;
   --chart-5: #e9d5ff;
@@ -87,7 +87,7 @@
   --sidebar-accent: #c4b5fd;
   --sidebar-accent-foreground: #000000;
   --sidebar-border: #e5e7eb;
-  --sidebar-ring: #a78bfa;
+  --sidebar-ring: #6e73f5;
 }
 
 .dark {
@@ -111,10 +111,10 @@
   --destructive: #f87171;
   --border: #3f3f4f;
   --input: #2a2a3d;
-  --ring: #a78bfa;
+  --ring: #ffffff;
 
   --chart-1: #51247A;
-  --chart-2: #a78bfa;
+  --chart-2: #ffffff;
   --chart-3: #c4b5fd;
   --chart-4: #d8b4fe;
   --chart-5: #e9d5ff;
@@ -126,12 +126,12 @@
   --sidebar-accent: #c4b5fd;
   --sidebar-accent-foreground: #ffffff;
   --sidebar-border: #3f3f4f;
-  --sidebar-ring: #a78bfa;
+  --sidebar-ring: #FFFFFF;
 }
 
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    @apply border-border;
   }
   body {
     background-color: #fafafa;
@@ -141,6 +141,37 @@
     background-size: 8px 8px;
     background-position: 0 0, 4px 4px; /* offsets second gradient for checkerboard */
   }
+
+  h1 {
+      font-size: 5.5rem;
+      font-weight: 700;
+      color: #104B7A;
+      line-height: 1.2;
+      font-family: "TASA Orbiter"
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: #104B7A;
+      line-height: 1.2;
+      font-family: "Geist Mono"
+    }
+
+    .hname {
+      font-size: 3rem;
+      font-weight: 700;
+      color: #104B7A;
+      line-height: 1.2;
+      font-family: "TASA Orbiter"
+    }
+
+    input,
+    textarea,
+    select,
+    button {
+      @apply outline-none focus:outline-none focus:ring-0;
+    }
 
 }
 @layer base {

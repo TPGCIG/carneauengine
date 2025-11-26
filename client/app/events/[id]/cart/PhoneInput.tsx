@@ -71,7 +71,7 @@ const PopoverContent = React.forwardRef<
       align={align}
       sideOffset={sideOffset}
       className={cn(
-        "z-50 w-72 rounded-md border bg-white p-4 text-popover-foreground shadow-md outline-none data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
+        "z-50 w-72 rounded-none border bg-white p-4 text-popover-foreground shadow-md outline-none data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
         className
       )}
       {...props}
@@ -189,7 +189,7 @@ const PhoneInput = React.forwardRef<HTMLInputElement, PhoneInputProps>(
           options={COUNTRIES}
         />
         <Input
-          className="rounded-e-lg rounded-s-none placeholder:text-muted-foreground placeholder:opacity-50"
+          className="rounded-none placeholder:text-muted-foreground placeholder:opacity-50"
           type="tel"
           value={phoneNumber}
           onChange={handleInputChange}
@@ -236,7 +236,7 @@ const CountrySelect = ({
         <Button
           type="button"
           variant="outline"
-          className={cn("flex gap-1 rounded-e-none rounded-s-lg px-3 border-r-0 focus:z-10 bg-transparent text-foreground border-input hover:bg-accent hover:text-accent-foreground w-[100px] justify-between")}
+          className={cn("flex gap-1 rounded-noneroun px-3 border-r-0 focus:z-10 bg-transparent text-foreground border-input hover:bg-accent hover:text-accent-foreground w-[100px] justify-between")}
           disabled={disabled}
         >
           <div className="flex items-center gap-2 truncate">
@@ -305,7 +305,7 @@ const CountrySearchList = ({
                     placeholder="Search country..." 
                     value={search}
                     onValueChange={setSearch}
-                    className="flex h-11 w-full rounded-md bg-transparent py-3 text-sm outline-none placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50"
+                    className="flex h-11 w-full rounded-none bg-transparent py-3 text-sm outline-none placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50"
                 />
             </div>
             
@@ -329,7 +329,7 @@ const CountrySearchList = ({
                               value={option.label}
                               onSelect={() => onSelect(option)} 
                               onClick={() => onSelect(option)}
-                              className="absolute left-0 top-0 w-full cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none hover:bg-accent hover:text-accent-foreground flex gap-2"
+                              className="absolute left-0 top-0 w-full cursor-default select-none items-center rounded-none px-2 py-1.5 text-sm outline-none hover:bg-accent hover:text-accent-foreground flex gap-2"
                               style={{
                                 height: `${virtualRow.size}px`,
                                 transform: `translateY(${virtualRow.start}px)`,

@@ -29,22 +29,22 @@ export function TicketTypeRow({
   };
 
   return (
-    <div className="flex items-center justify-between p-4 border rounded-md">
+    <div className="flex items-center justify-between p-4 border">
       <div>
         <div className="font-semibold">{ticketType}</div>
         <div className="text-sm text-gray-500">${price.toFixed(2)}</div>
       </div>
       <div className="flex items-center space-x-2">
-        <Button variant="outline" size="sm" onClick={() => handleChange(count - 1)}>–</Button>
+        <Button variant="outline" size="sm" className="rounded-none" onClick={() => handleChange(count - 1)}>–</Button>
         <Input
           type="number"
           value={count}
           onChange={(e) => handleChange(Number(e.target.value))}
-          className="w-16 text-center"
+          className="w-16 text-center rounded-none"
           min={min}
           max={max}
         />
-        <Button variant="outline" size="sm" onClick={() => handleChange(count + 1)}>+</Button>
+        <Button variant="outline" size="sm" className="rounded-none" onClick={() => handleChange(count + 1)}>+</Button>
       </div>
     </div>
   );

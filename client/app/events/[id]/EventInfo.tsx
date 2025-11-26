@@ -22,7 +22,8 @@ interface EventDisplayProps {
 function EventDisplay( { event } : EventDisplayProps ) {
     return (
         <div className="">
-           {event.title} and {event.description}
+           <p className="hname">{event.title}</p>
+           <p>{event.description}</p>
         </div>
     )
 }

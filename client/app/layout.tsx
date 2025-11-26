@@ -25,12 +25,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com"/>
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+          <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=TASA+Orbiter:wght@400..800&display=swap" rel="stylesheet"/>
+      </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}>
         
         <Navigation />
 
         {/* Main content */}
-        <div className="flex-1 relative mx-auto w-full max-w-[1280px] px-10
+        <div className="flex-1 relative mx-auto w-full max-w-7xl px-10
           before:absolute before:top-0 before:bottom-0 before:left-0 before:w-px before:bg-gray-300
           after:absolute after:top-0 after:bottom-0 after:right-0 after:w-px after:bg-gray-300">
 

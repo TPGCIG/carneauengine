@@ -153,9 +153,9 @@ const EventPage = () => {
             <SheetTrigger asChild>
               <div className="relative w-full max-w-xs mx-auto">
                 {/* Outer outline slightly bigger than button */}
-                <span className="absolute -inset-3 border border-gray-300 rounded-md"></span>
-                <button className="relative w-full bg-purple-500 text-white rounded-md px-6 py-5 font-semibold hover:bg-purple-600 transition">
-                  Buy Tickets
+                <span className="absolute -inset-3 border-gray-300 border-2 border-dashed"></span>
+                <button className="relative w-full bg-primary text-white px-6 py-5 font-semibold hover:bg-secondary transition">
+                  Get Tickets
                 </button>
               </div>
             </SheetTrigger>

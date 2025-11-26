@@ -20,30 +20,34 @@ const EventList: FC<EventListProps> = ({ events }) => {
         <div className="event-list grid grid-cols-4 gap-4 ">
             {events.map(event => (
                 <a className="block" href={`/events/${event.id}`} key={event.id}>
-                    <div 
-                    className="max-w-sm h-66 overflow-hidden shadow-md
-                                hover:bg-primary hover:text-primary-foreground
-                                transition-colors duration-300 ease-in-out
-                                flex flex-col"
-                    >
-                        {/* Image */}
-                        <img className="w-full h-38 object-cover" src={event.image_url} />
+  <div
+    className="max-w-sm h-66 overflow-hidden
+               hover:bg-primary hover:text-primary-foreground
+               transition-colors duration-300 ease-in-out
+               flex flex-col
+               border-2 border-dashed border-gray-400 "
+  >
+    {/* Image */}
+    {event.image_url && (
+      <img className="w-full h-38 object-cover" src={event.image_url} />
+    )}
 
-                        {/* Title */}
-                        <div className="px-6 py-2 flex-1">
-                            <div className="text-lg mb-1 line-clamp-2">
-                            {event.title}
-                            </div>
-                        </div>
+    {/* Title */}
+    <div className="px-6 py-2 flex-1">
+      <div className="text-lg mb-1 line-clamp-2">
+        {event.title}
+      </div>
+    </div>
 
-                        {/* Organisation tag */}
-                        <div className="px-6 pt-1 pb-2">
-                            <span className="inline-block bg-gray-200 px-3 py-1 text-sm font-semibold text-gray-700 truncate">
-                            {event.organisation_name}
-                            </span>
-                        </div>
-                    </div>
-                </a>
+    {/* Organisation tag */}
+    <div className="px-6 pt-1 pb-2">
+      <span className="inline-block bg-gray-200 px-3 py-1 text-sm font-semibold text-gray-700 truncate">
+        {event.organisation_name}
+      </span>
+    </div>
+  </div>
+</a>
+
             ))}
         </div>
     )

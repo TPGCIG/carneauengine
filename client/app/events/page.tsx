@@ -4,6 +4,7 @@ import  EventList  from '@/app/events/EventList'
 import { SearchForEvent } from '@/app/events/Searchbar'
 import { useState, useEffect } from "react"
 import Fuse from "fuse.js"
+import Link from "next/link";
 
 
 export default function Home() {
@@ -37,6 +38,11 @@ export default function Home() {
 
 	return (
 		<div className=''>
+			<div className='flex flex-col items-center pt-15'>
+				<h1 className=''>Looking for events?</h1>
+				<h1 className=''>We've got a few.</h1>
+				<h2 className='text-gray-600'><br/>Don't see your event on the list? <Link href="/reachout" className='text-primary underline'>We can change that.</Link></h2>
+			</div>
 			<div className="flex items-center justify-center font-sans dark:primary py-8">
 				<SearchForEvent onSearch={handleSearch}/>
 			</div>

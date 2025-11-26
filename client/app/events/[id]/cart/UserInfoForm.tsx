@@ -37,13 +37,13 @@ export function UserInfoForm() {
           </FieldDescription>
           <FieldGroup>
             <Field>
-              <FieldLabel htmlFor="street">Email Address</FieldLabel>
-              <Input id="street" type="text" placeholder="Enter your email" className="outline-black placeholder:text-muted-foreground placeholder:opacity-50" />
+              <FieldLabel htmlFor="street" >Email Address</FieldLabel>
+              <Input id="street" type="text" placeholder="Enter your email" className="bg-white  rounded-none outline-none focus:outline-none focus:ring-0 shadow-none appearance-none" />
             </Field>
             <Field>
               <FieldLabel htmlFor="street">Street Address</FieldLabel>
               <PhoneInput
-                className="outline outline-offset-2 [outline-color:theme(colors.black)] rounded-xs"
+                className="rounded-none outline-none focus:outline-none focus:ring-0 shadow-none focus-within:shadow-none"
                 defaultCountry="AU"
                   value={phone}
                   onChange={setPhone}

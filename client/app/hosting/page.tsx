@@ -1,10 +1,16 @@
-export default function Home() {
+// app/not-found.tsx
+"use client";
 
-    return(
-    <div className="flex min-h-screen items-center justify-center bg-neutral-900 font-sans dark:bg-black">
-          
-    
-        </div>
-    )
+import Link from "next/link";
 
+export default function Hosting() {
+  return (
+    <div className="min-h-screen flex flex-col items-center justify-center">
+      <h1 className="text-6xl font-bold mb-4">This page is under construction!</h1>
+      <p className="text-xl mb-8">Give us a sec.</p>
+      <Link href="/" className="text-blue-600 underline hover:text-blue-800">
+        Go back home
+      </Link>
+    </div>
+  );
 }

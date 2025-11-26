@@ -26,7 +26,7 @@ export function SearchForEvent( { onSearch } ) {
         onChange={handleInput}
         type="text"
         placeholder="Search events..."
-        className="w-full pl-14 pr-4 py-4 text-xl border border-gray-300 bg-gray-100 focus:outline-none focus:ring-2 focus:ring-primary"
+        className="w-full pl-14 pr-4 py-4 text-xl border border-gray-300 bg-gray-100 focus:outline-none"
       />
     </div>
   </div>

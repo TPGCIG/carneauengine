@@ -9,7 +9,8 @@ import {
   CalendarDays, 
   Sparkles, 
   BookOpen, 
-  LogIn 
+  LogIn,
+  ArrowRight 
 } from "lucide-react"; // Install lucide-react if you haven't
 
 export function Navigation() {
@@ -34,7 +35,6 @@ export function Navigation() {
                 <Image 
                   src={logo} 
                   alt="Carneau Logo" 
-                  placeholder="blur" 
                   className="h-8 w-auto" 
                 />
              </Link>
