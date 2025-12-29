@@ -31,23 +31,23 @@ export function UserInfoForm() {
     return (
       <div className="w-full max-w-md space-y-6">
         <FieldSet>
-          <FieldLegend>Personal Information</FieldLegend>
+          <FieldLegend><h2>Personal Information</h2></FieldLegend>
           <FieldDescription>
             The tickets will be mailed to your email address.
           </FieldDescription>
           <FieldGroup>
             <Field>
-              <FieldLabel htmlFor="street" >Email Address</FieldLabel>
-              <Input id="street" type="text" placeholder="Enter your email" className="bg-white  rounded-none outline-none focus:outline-none focus:ring-0 shadow-none appearance-none" />
+              <FieldLabel htmlFor="street" ><h3>Email Address:</h3></FieldLabel>
+              <Input id="street" type="text" placeholder="user@email.com" className="bg-white rounded-none outline-none focus:outline-none focus:ring-0 shadow-none appearance-none placeholder:text-gray-500" />
             </Field>
             <Field>
-              <FieldLabel htmlFor="street">Street Address</FieldLabel>
+              <FieldLabel htmlFor="street"><h3>Phone Number:</h3></FieldLabel>
               <PhoneInput
                 className="rounded-none outline-none focus:outline-none focus:ring-0 shadow-none focus-within:shadow-none"
                 defaultCountry="AU"
                   value={phone}
                   onChange={setPhone}
-                  placeholder="Enter your phone number"
+                  placeholder="412345678"
                 />
             </Field>
           </FieldGroup>

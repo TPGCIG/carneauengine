@@ -152,7 +152,7 @@
 
     h2 {
       font-size: 1.5rem;
-      font-weight: 400;
+      font-weight: 500;
       color: #104B7A;
       line-height: 1.2;
       font-family: "Geist Mono"
@@ -164,6 +164,14 @@
       color: #104B7A;
       line-height: 1.2;
       font-family: "TASA Orbiter"
+    }
+
+    h3 {
+      font-size: 1rem;
+      font-weight: 400;
+      color: #686868;
+      line-height: 1.2;
+      font-family: "Geist Mono"
     }
 
     input,
