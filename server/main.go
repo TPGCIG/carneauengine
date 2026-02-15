@@ -3,12 +3,14 @@ package main
 import (
 	"context"
 	"log"
+	"os"
 	"time"
 
 	"github.com/gin-gonic/gin"
 
 	"github.com/gin-contrib/cors"
 	"github.com/joho/godotenv"
+	"github.com/stripe/stripe-go/v83"
 	"github.com/tpgcig/carneauengine/server/db"
 	"github.com/tpgcig/carneauengine/server/handlers"
 )
@@ -21,7 +23,8 @@ func init() {
 }
 
 func main() {
-
+	stripe.Key = os.Getenv("STRIPE_SECRET_KEY")
+	
 	r := gin.Default()
 
 	r.Use(cors.New(cors.Config{
@@ -32,8 +35,6 @@ func main() {
 		AllowCredentials: true,
 		MaxAge: 12 * time.Hour,
 	    }))
-
-	// stripeKey := os.Getenv("STRIPE_SECRET_KEY")	
 
 	conn, err := db.Connect()
 	if err != nil {
@@ -46,7 +47,7 @@ func main() {
 	r.GET("/api/events", h.GetSummarisedEvents)
 	r.GET("/api/events/:id", h.GetEvent)
 	r.POST("/api/ticketTypes", h.GetTicketTypes)
-	//r.GET("/checkout/create-checkout-session", h.CreateCheckoutSession)
+	r.POST("/create-checkout-session", h.CreateCheckoutSession)
 
 	// Start server on port 8080 (default)
 	// Server will listen on 0.0.0.0:8080 (localhost:8080 on Windows)
