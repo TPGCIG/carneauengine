@@ -1,5 +1,7 @@
 # Carneau Engine: Event Ticketing Platform
 
+## Note: This project is only able to be ran locally at the moment and is in the process of being deployed.
+
 ## Project Overview
 
 Carneau Engine is a modern, full-stack event ticketing platform designed to provide a a robust and scalable solution for managing and selling event tickets. It features a responsive frontend for event browsing and purchasing, backed by a high-performance Go API, and leverages advanced techniques for ensuring data consistency and optimal user experience.
