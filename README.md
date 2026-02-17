@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-Carneau Engine is a modern, full-stack event ticketing platform designed to provide a robust and scalable solution for managing and selling event tickets. It features a responsive frontend for event browsing and purchasing, backed by a high-performance Go API, and leverages advanced techniques for ensuring data consistency and optimal user experience.
+Carneau Engine is a modern, full-stack event ticketing platform designed to provide a a robust and scalable solution for managing and selling event tickets. It features a responsive frontend for event browsing and purchasing, backed by a high-performance Go API, and leverages advanced techniques for ensuring data consistency and optimal user experience.
 
 ## Key Features
 
@@ -10,7 +10,7 @@ Carneau Engine is a modern, full-stack event ticketing platform designed to prov
 *   **Ticket Sales:** Select and purchase tickets for desired events.
 *   **Secure Payment Processing:** Seamless integration with Stripe for checkout sessions.
 *   **Atomic Ticket Reservation:** Concurrency-safe system to prevent overselling of limited tickets.
-*   **High Performance:** Caching mechanisms to optimize data delivery for frequently accessed event information.
+*   **High Performance:** Caching mechanisms to optimise data delivery for frequently accessed event information.
 *   **User Authentication:** (Planned) Secure user registration and login.
 *   **Responsive Design:** Modern user interface built with Next.js and Tailwind CSS.
 
@@ -19,7 +19,7 @@ Carneau Engine is a modern, full-stack event ticketing platform designed to prov
 The project is structured into a client-server architecture:
 
 *   **Frontend (Client):** A Next.js application built with TypeScript, Tailwind CSS, and shadcn/ui, providing the user interface for event discovery, cart management, and payment initiation.
-*   **Backend (Server):** A Go application utilizing the Gin web framework, responsible for handling API requests, business logic, database interactions, and integrations with external services like Stripe.
+*   **Backend (Server):** A Go application utilising the Gin web framework, responsible for handling API requests, business logic, database interactions, and integrations with external services like Stripe.
 *   **Database:** PostgreSQL serves as the primary data store for all persistent data including users, events, ticket types, purchases, and tickets.
 *   **Caching & Concurrency Layer:** Redis is employed for critical performance enhancements and to ensure transactional integrity in high-concurrency scenarios.
 
@@ -27,7 +27,7 @@ The project is structured into a client-server architecture:
 
 *   **Atomic Ticket Reservation System:**
     *   Implemented a robust solution to prevent overselling of tickets, a common challenge in ticketing platforms.
-    *   Utilizes a combination of **PostgreSQL's `SELECT ... FOR UPDATE`** for pessimistic locking during initial availability checks and **atomic Redis Lua scripts** for temporary ticket holds during the checkout process.
+    *   Utilises a combination of **PostgreSQL's `SELECT ... FOR UPDATE`** for pessimistic locking during initial availability checks and **atomic Redis Lua scripts** for temporary ticket holds during the checkout process.
     *   Ensures that requested tickets are reserved for a user for a set duration (e.g., 15 minutes) before payment, and are automatically released if the purchase is not completed, or permanently allocated upon successful Stripe payment.
 *   **Event Data Caching:**
     *   Integrated Redis caching for read-heavy API endpoints (e.g., listing all events, fetching individual event details).
@@ -136,15 +136,15 @@ SENDER_EMAIL=""
 ## Deployment Strategy (Planned)
 
 The planned deployment strategy for production involves a hybrid approach to leverage optimal services for each component:
-*   **Frontend:** Deployed on Vercel for highly optimized Next.js hosting.
+*   **Frontend:** Deployed on Vercel for highly optimised Next.js hosting.
 *   **Backend:** Deployed as a web service on an integrated PaaS like Render (for Go application).
-*   **Databases:** Utilize free and persistent managed services like Neon.tech or Supabase for PostgreSQL, and Upstash for Redis.
+*   **Databases:** Utilise free and persistent managed services like Neon.tech or Supabase for PostgreSQL, and Upstash for Redis.
 
 ## Future Enhancements (from ROADMAP.md)
 
 *   **User Authentication:** Full implementation of user registration, login, and secure session management.
 *   **"My Tickets" Page:** A dedicated user interface for viewing purchased tickets.
-*   **Organizer Dashboard:** Features for event creators to manage events and ticket sales.
+*   **Organiser Dashboard:** Features for event creators to manage events and ticket sales.
 *   **Ticket Scanning System:** Functionality for event staff to verify tickets via QR codes.
 *   **CI/CD Pipeline:** Automated testing, building, and deployment.
 
