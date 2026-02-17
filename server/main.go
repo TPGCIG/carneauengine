@@ -42,12 +42,32 @@ func main() {
 	}
 	defer conn.Close(context.Background());
 
-	h := handlers.NewHandler(conn);
+	rdb, err := db.ConnectRedis(context.Background())
+	if err != nil {
+		log.Fatalf("Redis connection failed: %v", err)
+	}
+	defer rdb.Close()
 
+	h := handlers.NewHandler(conn, rdb);
+
+	// Public routes
 	r.GET("/api/events", h.GetSummarisedEvents)
 	r.GET("/api/events/:id", h.GetEvent)
 	r.POST("/api/ticketTypes", h.GetTicketTypes)
-	r.POST("/create-checkout-session", h.CreateCheckoutSession)
+	r.POST("/register", h.Register)
+	r.POST("/login", h.Login)
+	r.POST("/create-checkout-session", h.CreateCheckoutSession) // Moved to public
+	r.GET("/api/purchases/:stripeSessionId", h.GetPurchaseByStripeSessionID) // New endpoint for purchase details
+
+	// Stripe webhook is public as it's called by Stripe
+	r.POST("/stripe-webhook", h.StripeWebhook)
+
+	// Protected routes (require authentication)
+	protected := r.Group("/")
+	protected.Use(handlers.AuthMiddleware())
+	{
+		// Add other protected routes here later, e.g., for user profile, managing events
+	}
 
 	// Start server on port 8080 (default)
 	// Server will listen on 0.0.0.0:8080 (localhost:8080 on Windows)
