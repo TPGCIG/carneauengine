@@ -40,7 +40,7 @@ func main() {
 	if err != nil {
 		log.Fatalf("DB connection failed: %v", err)
 	}
-	defer conn.Close(context.Background());
+	defer conn.Close()
 
 	rdb, err := db.ConnectRedis(context.Background())
 	if err != nil {
