@@ -1,6 +1,5 @@
 # Carneau Engine: Event Ticketing Platform
 
-## Note: This project is only able to be ran locally at the moment and is in the process of being deployed.
 
 ## Project Overview
 
