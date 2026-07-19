@@ -1,5 +1,7 @@
+
 # Carneau Engine: Event Ticketing Platform
 
+<img width="1421" height="866" alt="Screenshot_20260719_113646" src="https://github.com/user-attachments/assets/67196574-8090-4205-aa4f-8c9f5b7ee95a" />
 
 ## Project Overview
 
